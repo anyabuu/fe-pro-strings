@@ -2,9 +2,24 @@
  * Мы передаем строку и должны заменить любую z или v вне зависимости от регистра
  * на символ звездочки *
  * @param {string} string
- * @returns {string}
+ * @returns {boolean}
  */
-export const replaceZAndVFromString = (string) => {};
+export const replaceZAndVFromString = (string) => {
+
+   let newString = "";
+
+   for (let i = 0; i < string.length; i++){
+      if (string[i].toLowerCase() === "z"){
+         newString += '*';
+      } else if (string[i].toLowerCase() === "v") {
+         newString += '*';
+      } else {
+         newString += string[i];
+      }
+   }
+
+   return newString;
+};
 
 /**
  * Функция должна принять 3 аргумента и все строки. Мы передаем строку,
@@ -16,7 +31,21 @@ export const replaceZAndVFromString = (string) => {};
  * @param {string} newWord
  * @returns {string}
  */
-export const changeWord = (string, word, newWord) => {};
+export const changeWord = (string, word, newWord) => {
+
+   let singleWord = string.split(' ');
+
+   let newString = singleWord.map(function (item) {
+
+      if (item.toLowerCase() === word) {
+         return newWord;
+      } else {
+         return item
+      }
+   });
+
+      return newString.join(' ');
+};
 
 /**
  * Должна вернуть строку(1 аргумент) на обрезанную по длине(2 аргумент, число)
@@ -24,7 +53,11 @@ export const changeWord = (string, word, newWord) => {};
  * @param {number} length
  * @returns {string}
  */
-export const truncate = (string, length) => {};
+export const truncate = (string, length) => {
+
+   return string.slice(0,length);
+
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -37,7 +70,20 @@ export const truncate = (string, length) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbols = (string, symbol) => {};
+export const quantityOfSymbols = (string, symbol) => {
+
+   let total = 0;
+
+   for(let i = 0; i < string.length; i++){
+     let symbolCount = total;
+
+      if(string[i].toLowerCase() === symbol){
+         total = symbolCount + 1;
+      }
+   }
+
+   return total;
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -54,4 +100,14 @@ export const quantityOfSymbols = (string, symbol) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbolsWithIndexOf = (string, symbol) => {};
+export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
+      let i = 0;
+      let index = string.toLowerCase().indexOf(symbol);
+
+      while (index !== -1) {
+         i++
+         index = string.indexOf(symbol, index + 1);
+      }
+
+      return i;
+};
