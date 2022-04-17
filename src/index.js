@@ -55,7 +55,9 @@ export const changeWord = (string, word, newWord) => {
  */
 export const truncate = (string, length) => {
 
-   return string.slice(0,length);
+    let newString = string.slice(0,length);
+
+    return newString;
 
 };
 
