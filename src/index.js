@@ -36,7 +36,7 @@ export const changeWord = (string, word, newWord) => {
     let singleWord = string.split(' ');
 
     for (let i = 0; i < singleWord.length; i++) {
-        if (singleWord[i] === word) {
+        if (singleWord[i].toLowerCase() === word) {
             string = string.replace(singleWord[i], newWord)
             break;
         }
@@ -44,22 +44,6 @@ export const changeWord = (string, word, newWord) => {
 
     return string;
 
-    /*
-
-       let singleWord = string.split(' ');
-
-       let newString = singleWord.map(function (item) {
-
-          if (item.toLowerCase() === word) {
-             return newWord;
-          } else {
-             return item
-          }
-       });
-
-          return newString.join(' ');
-
-     */
 };
 
 /**
@@ -118,13 +102,14 @@ export const quantityOfSymbols = (string, symbol) => {
  * @returns {number}
  */
 export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
-      let i = 0;
-      let index = string.toLowerCase().indexOf(symbol);
 
-      while (index !== -1) {
-         i++
-         index = string.indexOf(symbol, index + 1);
+      let count = 0;
+      let indexOfSymbol = 0;
+
+      while (indexOfSymbol !== -1) {
+          count++
+          indexOfSymbol = string.toLowerCase().indexOf(symbol, indexOfSymbol + 1);
       }
 
-      return i;
+      return count;
 };
