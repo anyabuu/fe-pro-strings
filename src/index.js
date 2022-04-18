@@ -33,18 +33,33 @@ export const replaceZAndVFromString = (string) => {
  */
 export const changeWord = (string, word, newWord) => {
 
-   let singleWord = string.split(' ');
+    let singleWord = string.split(' ');
 
-   let newString = singleWord.map(function (item) {
+    for (let i = 0; i < singleWord.length; i++) {
+        if (singleWord[i] === word) {
+            string = string.replace(singleWord[i], newWord)
+            break;
+        }
+    }
 
-      if (item.toLowerCase() === word) {
-         return newWord;
-      } else {
-         return item
-      }
-   });
+    return string;
 
-      return newString.join(' ');
+    /*
+
+       let singleWord = string.split(' ');
+
+       let newString = singleWord.map(function (item) {
+
+          if (item.toLowerCase() === word) {
+             return newWord;
+          } else {
+             return item
+          }
+       });
+
+          return newString.join(' ');
+
+     */
 };
 
 /**
