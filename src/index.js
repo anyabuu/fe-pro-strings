@@ -33,17 +33,9 @@ export const replaceZAndVFromString = (string) => {
  */
 export const changeWord = (string, word, newWord) => {
 
-    let singleWord = string.split(' ');
+    let position = string.indexOf(word);
 
-    for (let i = 0; i < singleWord.length; i++) {
-        if (singleWord[i].toLowerCase() === word) {
-            string = string.replace(singleWord[i], newWord)
-            break;
-        }
-    }
-
-    return string;
-
+    return `${string.slice(0, position)}${newWord}${string.slice(word.length + position)}`;
 };
 
 /**
@@ -57,7 +49,6 @@ export const truncate = (string, length) => {
     let newString = string.slice(0,length);
 
     return newString;
-
 };
 
 /**
@@ -106,9 +97,12 @@ export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
       let count = 0;
       let indexOfSymbol = 0;
 
-      while (indexOfSymbol !== -1) {
-          count++
+      while (true) {
           indexOfSymbol = string.toLowerCase().indexOf(symbol, indexOfSymbol + 1);
+          if(indexOfSymbol === -1){
+              break;
+          }
+          count++;
       }
 
       return count;
