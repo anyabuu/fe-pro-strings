@@ -69,7 +69,7 @@ export const quantityOfSymbols = (string, symbol) => {
    for(let i = 0; i < string.length; i++){
      let symbolCount = total;
 
-      if(string[i].toLowerCase() === symbol){
+      if(string[i].toLowerCase() === symbol.toLowerCase()){
          total = symbolCount + 1;
       }
    }
